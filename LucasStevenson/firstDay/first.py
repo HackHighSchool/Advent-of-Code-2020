@@ -1,5 +1,5 @@
 '''
-https://adventofcode.com/2020/day/1#part2
+https://adventofcode.com/2020/day/1
 '''
 with open("input.txt") as f:
     line = f.readline()
