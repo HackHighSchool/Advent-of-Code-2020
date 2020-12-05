@@ -13,7 +13,7 @@ for line in file:
     elements = line.split(' ') #Break line into elements divided by space; these can be manipulated to represent the letter, range of occurrences, and password
 
     letter = elements[1].split(':')[0] #Extract letter from file line
-    occurrence_range = range(int(elements[0].split('-')[0]), int(elements[0].split('-')[1])+1) #Extract allowed occurrence range from file line
+    occurrence_range = range(int(elements[0].split('-')[0]), int(elements[0].split('-')[1])+1) #Extract allowed occurrence range from file line (range does not include the top value, so add 1)
     pwd = elements[2] #Extract password
 
     password = Password(letter, occurrence_range, pwd) #Create Password object to store these three characteristics
