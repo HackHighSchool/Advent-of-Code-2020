@@ -1,11 +1,11 @@
-import math
+import math #Math module will be used for rounding operations
 
 def count_trees(fileArr, col_inc, row_inc): #Function to count trees (based on the file of the slope, column increment (how much to move to the right) and row increment (how much to move down))
     slope = []
     line_count = len(fileArr) #Number of lines in the file
 
     for line in fileArr: #Create array of trees based on column increment (the amount moving to the right determines how many times to multiply each row)
-        slope.append(line[0:len(line)-1] * (len(line) * (math.ceil(line_count / len(line)) * col_inc)))
+        slope.append(line[0:len(line)-1] * (len(line) * (math.ceil(line_count / len(line)) * col_inc))) #Need to traverse right three for every traversal down 1 => rows must be 3x as long as cols
 
     #Keep track of tree count, row position, and column position
     tree_count = 0
@@ -24,7 +24,7 @@ def count_trees(fileArr, col_inc, row_inc): #Function to count trees (based on t
 
     return tree_count #Function return value is the number of trees calculated
 
-file = open("trees.txt", 'r')
+file = open("day3trees.txt", 'r')
 fileArr = [] #File array contains each line from file (so file doesn't have to be reopended and reread each time)
 
 #Add values from file to file array
