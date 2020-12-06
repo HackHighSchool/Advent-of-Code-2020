@@ -1,5 +1,5 @@
 '''
-https://adventofcode.com/2020/day/1
+https://adventofcode.com/2020/day/1#part2
 '''
 with open("input.txt") as f:
     line = f.readline()
@@ -16,4 +16,3 @@ for i in range(0, len(inputs)):
                 answer = inputs[i] * inputs[j] * inputs[k]
                 break
 print(answer)
-
