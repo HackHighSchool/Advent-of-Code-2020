@@ -9,7 +9,7 @@ answers = [] #Temporary answer array changes with each iteration
 
 for line in readFile:
 
-    if line == '': #If the line is empty (linebreak), append finished answer the filled answer array
+    if line == '': #If the line is empty (linebreak), append finished answer the filled answer matrix
         answers_matrix.append(answers)
         answers = []
 
