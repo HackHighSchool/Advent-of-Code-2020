@@ -33,8 +33,6 @@ for x in range(len(passports)):
 
                                 #Validate hair color
                                 for char in passports[x]["hcl"][1:]:
-                                    print(char)
-                                    print(char in "abcdefghijklmnopqrstuvwxyz1234567890")
                                     if char in "abcdefghijklmnopqrstuvwxyz1234567890":
                                         valid_hcl = True
                                     else:
