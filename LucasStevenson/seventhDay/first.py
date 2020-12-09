@@ -37,11 +37,10 @@ def numBags(color):
     checkedColors = []
     if len(containsColor) == 0:
         return []
-    else:
-        for color in containsColor:
-            checkedColors.append(color)
-            checkedColors += numBags(color)
-        return set(checkedColors)
+    for color in containsColor:
+        checkedColors.append(color)
+        checkedColors += numBags(color)
+    return set(checkedColors)
 
 
 print(len(numBags("shiny gold")))
