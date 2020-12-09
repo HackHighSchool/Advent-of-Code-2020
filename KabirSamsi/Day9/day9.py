@@ -17,7 +17,7 @@ while valid:
 
     for x in numbers[start_index: start_index+25]: #Number 1 iterates through the sliced first 25 numbers
         for y in numbers[start_index: start_index+25]: #Number 2 iterates through the sliced first 25 numbers
-            if x+y == number and x != y: #If there are two discrete numbers that sum up to the latest value, then it is valid
+            if x+y == number and x != y: #If there are two discrete numbers that sum up to the last value in the slice, then it is valid
                 valid = True
                 break
 
