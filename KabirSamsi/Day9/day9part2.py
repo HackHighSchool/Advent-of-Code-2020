@@ -7,7 +7,7 @@ for line in file:
 
 file.close()
 
-valid = True #Variable checks whether each value is valid
+valid = True #Variable stores value validity
 start_index = 0 #Number tracks how many iterations have occurred, and where in the array to start the 25-item slice
 
 #Continue loop as long as the latest number is valid
