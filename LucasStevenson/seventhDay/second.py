@@ -12,7 +12,7 @@ def totalNumBags(color):
     counter = 0
     # append each child bag into an array, innerBags
     # recursively iterate through each color('s color color ....) in the array
-    # add the result of numofbags + (numofbags + totalNumBags(color)) to counter
+    # add the result of numofbags + (numofbags * totalNumBags(color)) to counter
     innerBags = [' '.join(color.split()[:-1])
                  for color in line]  # [num bag, ...]
     for info in innerBags:
