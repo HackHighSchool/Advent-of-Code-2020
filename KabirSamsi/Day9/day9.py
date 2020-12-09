@@ -12,7 +12,7 @@ start_index = 0 #Number tracks how many iterations have occurred, and where in t
 
 #Continue loop as long as the latest number is valid
 while valid:
-    number = numbers[start_index + 25] #Number (26+however many iterations have occurred) in the array
+    number = numbers[start_index + 25] #Number (26 + iteration count) in the array
     valid = False #Variable is false until loop confirms that the number is valid
 
     for x in numbers[start_index: start_index+25]: #Number 1 iterates through the sliced first 25 numbers
