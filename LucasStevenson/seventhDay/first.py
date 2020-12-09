@@ -20,13 +20,6 @@ with open("input.txt") as f:
 
 
 def numBags(color):
-    '''
-    I had a tough time with this one, so after hours of trying, I decided to seek help online
-
-    THIS CODE LOGIC CAME FROM https://www.youtube.com/watch?v=7IOd7wvxDX0
-
-    Highly recommend watching. He explains it really well :)
-    '''
     containsColor = []  # keeps track of the bags that hold the specified color
     for k, v in inputs.items():
         # check to see if the colors are in the value arrays
