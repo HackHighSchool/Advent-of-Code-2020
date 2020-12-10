@@ -1,4 +1,4 @@
-#3-Ary Tree holds each node with a value that connects to three other nodes - First, Second and Third
+#Ternary Tree holds each node with a value that connects to three other nodes - First, Second and Third
 class Node:
 
     def __init__(self, val, seq, parent):
