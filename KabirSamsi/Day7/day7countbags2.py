@@ -6,7 +6,7 @@ def count_bags(bagset, luggage, prev_total):
 
     bagRow = {} #Temporary Bag Row dictionary stores all of the bags and their counts in each level of bags
 
-    for bag in bagset[len(bagset) - 1]: #Iterate through the previous row of bagset
+    for bag in bagset[-1]: #Iterate through the previous row of bagset
         for content in bag.contents: #Each bag contained inside the row
 
             #If the contained bag is already included in the new bag Row, add to it

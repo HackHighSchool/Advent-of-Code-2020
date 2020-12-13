@@ -1,47 +1,35 @@
 #Math and stats libraries will be used later for rounding and mean calculations
 import math
 import statistics
+from day5seat import Seat
 
-#Seat class allows storage of 'seats' in array
-class Seat:
+with open("day5positions.txt", 'r') as file:
+    seats = [] #Array will store Seat objects
 
-    def __init__(self, code, row, col):
-        self.code = code
-        self.row = row
-        self.col = col
-        self.id = (row*8) + col
+    for line in file:
+        row_range = [0, 127] #The current range of rows. With each iterated operation, the list gets smaller and tends towards one number
 
-file = open("day5positions.txt", 'r')
+        for row_pos in line[0:7]: #Row Position iterates over the first 7 terms (the 'F' and 'B' terms that determine row position)
+            if row_pos == 'F':
+                row_range = [row_range[0], math.floor(statistics.mean(row_range))] #If to the front, take only the lower part of the array
 
-seats = [] #Array will store Seat objects
-
-for line in file:
-
-    row_range = [0, 127] #The current range of rows. With each iterated operation, the list gets smaller and tends towards one number
-
-    for row_pos in line[0:7]: #Row Position iterates over the first 7 terms (the 'F' and 'B' terms that determine row position)
-        if row_pos == 'F':
-            row_range = [row_range[0], math.floor(statistics.mean(row_range))] #If to the front, take only the lower part of the array
-
-        elif row_pos == 'B':
-            row_range = [math.ceil(statistics.mean(row_range)), row_range[1]] #If to the back, take only the upper part of the array
+            elif row_pos == 'B':
+                row_range = [math.ceil(statistics.mean(row_range)), row_range[1]] #If to the back, take only the upper part of the array
 
 
-    col_range = [0, 7] #The current range of seat columns. With each iterated operation, the list gets smaller and tends towards one number
+        col_range = [0, 7] #The current range of seat columns. With each iterated operation, the list gets smaller and tends towards one number
 
-    for col_pos in line[7:]: #Column Position iterates over the last 3 terms (the 'L' and 'R' terms that determine column position)
+        for col_pos in line[7:]: #Column Position iterates over the last 3 terms (the 'L' and 'R' terms that determine column position)
 
-        if col_pos == 'L':
-            col_range = [col_range[0], math.floor(statistics.mean(col_range))] #If to the left, take only the lower part of the array
+            if col_pos == 'L':
+                col_range = [col_range[0], math.floor(statistics.mean(col_range))] #If to the left, take only the lower part of the array
 
-        elif col_pos == 'R':
-            col_range = [math.ceil(statistics.mean(col_range)), col_range[1]] #If to the right, take only the upper part of the array
+            elif col_pos == 'R':
+                col_range = [math.ceil(statistics.mean(col_range)), col_range[1]] #If to the right, take only the upper part of the array
 
-    #Create Seat object and add it to array
-    seat = Seat(line.split('\n')[0], row_range[0], col_range[0])
-    seats.append(seat)
-
-file.close()
+        #Create Seat object and add it to array
+        seat = Seat(line.split('\n')[0], row_range[0], col_range[0])
+        seats.append(seat)
 
 highest = seats[0] #Temporary seat with highest ID (will change with iterations)
 

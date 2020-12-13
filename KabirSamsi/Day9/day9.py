@@ -1,11 +1,8 @@
-file = open("day9numbers.txt", 'r')
+with open("day9numbers.txt", 'r') as file:
+    numbers = [] #Array stores all numbers read from file
 
-numbers = [] #Array stores all numbers read from file
-
-for line in file:
-    numbers.append(int(line))
-
-file.close()
+    for line in file:
+        numbers.append(int(line))
 
 valid = True #Variable stores value validity
 start_index = 0 #Number tracks how many iterations have occurred, and where in the array to start the 25-item slice

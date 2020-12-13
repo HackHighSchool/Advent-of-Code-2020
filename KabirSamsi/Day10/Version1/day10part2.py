@@ -1,6 +1,9 @@
-from day10tree import Node
+#This approach uses A tree structure to store each possible sequence. Works well on files with < 50 terms, after that causes memory issues
 
-with open("day10jolts.txt", 'r') as file:
+from day10tree import Node
+import random
+
+with open("../day10jolts.txt", 'r') as file:
     lines = list(file.readlines())
 
 jolts = [0] #Stores each joltage level, but contains 0 (the joltage of the node at the start of the chain)
@@ -12,10 +15,10 @@ for line in lines:
 
 #Sort jolts and add the adaptor rating
 jolts.sort()
-jolts.append(jolts[len(jolts) - 1] + 3)
+jolts.append(jolts[-1] + 3)
 
 
 print("Waiting...")
-head = Node(0, jolts, None) #Recursively creates a tree structure that stores each sequence as connected nodes
+head = Node(0, jolts[:45], None) #Recursively creates a tree structure that stores each sequence as connected nodes
 
 print(f"Total Sequences: {head.sequence_count}") #Output result (the number of sequences, starting with the head node)

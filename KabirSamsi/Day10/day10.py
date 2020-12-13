@@ -10,7 +10,7 @@ for line in lines:
 
 #Sort jolts and add the adaptor rating
 jolts.sort()
-jolts.append(jolts[len(jolts) - 1] + 3)
+jolts.append(jolts[-1] + 3)
 
 #Variables track the number of differences of 1, and differences of 3
 one_count = 0

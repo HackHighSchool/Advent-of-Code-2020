@@ -1,14 +1,11 @@
-file = open("bootcode.txt", 'r')
+with open("bootcode.txt", 'r') as file:
+    accumulated = 0 #Store accumulated values
+    commands = [] #Matrix of each command and its distance
+    executed = set() #Executed commands (use set to ensure no repeated values, and to improve search speed)
 
-accumulated = 0 #Store accumulated values
-commands = [] #Matrix of each command and its distance
-executed = set() #Executed commands (use set to ensure no repeated values, and to improve search speed)
-
-#Read through file and parse into into commands matrix
-for line in file:
-    commands.append((line.split()[0], int(line.split()[1]))) #Append tuple to matrix
-
-file.close()
+    #Read through file and parse into into commands matrix
+    for line in file:
+        commands.append((line.split()[0], int(line.split()[1]))) #Append tuple to matrix
 
 counter = 0 #Counter tracks which command is being executed
 
