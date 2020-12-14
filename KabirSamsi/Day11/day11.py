@@ -1,4 +1,4 @@
-position_vectors = ((0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1), (1, -1), (1, 0), (1, 1)) #Position vectors track the eight possible adjacent seats
+POSITION_VECTORS = ((0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1), (1, -1), (1, 0), (1, 1)) #Position vectors track the eight possible adjacent seats
 seats = [] #Matrix stores arrangement after each iteration (used as previous matrix which arrangement matrix is based on)
 arrangement  = [] #Matrix is built durinng iteration based on vector operations on initial 'seats' matrix
 
@@ -21,7 +21,7 @@ while seats != arrangement: #While the previous matrix is not the new one (while
 
             elif seats[x][y] == 'L': #Operations if the seat is empty
                 available = True #Tracks seat availability
-                for vector in position_vectors: #Perform each vector operation in the tuple of vectors
+                for vector in POSITION_VECTORS: #Perform each vector operation in the tuple of vectors
                     if ((x+vector[0]) in range(len(seats))) and ((y+vector[1]) in range(len(seats[x]))): #Remove any chance of index error from vector operations
                         if seats[x+vector[0]][y+vector[1]] not in ('L', '.'): #If seat is occupied
                             available = False #If any seat breaks the adjacency rule, seat is not available
@@ -33,7 +33,7 @@ while seats != arrangement: #While the previous matrix is not the new one (while
 
             elif seats[x][y] == '#': #Operations if the seat is occupied
                 occupied_count = 0 #Tracks how many seats are occupied
-                for vector in position_vectors: # Perform each vector operation in the tuple of vectors
+                for vector in POSITION_VECTORS: # Perform each vector operation in the tuple of vectors
                     if ((x+vector[0]) in range(len(seats))) and ((y+vector[1]) in range(len(seats[x]))): #Remove any chance of index error from vector operations
                         if seats[x+vector[0]][y+vector[1]] == '#': #Each vector translation maps onto an adjacent seat. If that seat is occupied, occupied_count increments
                             occupied_count += 1

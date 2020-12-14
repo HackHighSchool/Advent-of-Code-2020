@@ -1,6 +1,6 @@
 from vector import stretch
 
-position_vectors = ((0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1), (1, -1), (1, 0), (1, 1)) #Position vectors track the eight possible adjacent seats
+POSITION_VECTORS = ((0, -1), (0, 1), (-1, -1), (-1, 0), (-1, 1), (1, -1), (1, 0), (1, 1)) #Position vectors track the eight possible adjacent seats
 seats = [] #Matrix stores arrangement after each iteration (used as previous matrix which arrangement matrix is based on)
 arrangement  = [] #Matrix is built durinng iteration based on vector operations on initial 'seats' matrix
 
@@ -23,7 +23,7 @@ while seats != arrangement: #While the previous matrix is not the new one (while
 
             elif seats[x][y] == 'L': #Operations if the seat is empty
                 available = True #Tracks seat availability
-                for vector in position_vectors: #Perform each vector operation in the tuple of vectors
+                for vector in POSITION_VECTORS: #Perform each vector operation in the tuple of vectors
                     if ((x+vector[0]) in range(len(seats))) and ((y+vector[1]) in range(len(seats[x]))): #Remove any chance of index error from vector operations
                         eigenvector = list(vector) #Mutable vector can be stretched with eigenvector stretch function
                         seat_count = 0 #Tracks the count of seats along each elongating vector
@@ -48,7 +48,7 @@ while seats != arrangement: #While the previous matrix is not the new one (while
 
             elif seats[x][y] == '#': #Operations if the seat is occupied
                 occupied_count = 0 #Tracks how many seats are occupied
-                for vector in position_vectors: # Perform each vector operation in the tuple of vectors
+                for vector in POSITION_VECTORS: # Perform each vector operation in the tuple of vectors
                     if ((x+vector[0]) in range(len(seats))) and ((y+vector[1]) in range(len(seats[x]))): #Remove any chance of index error from vector operations
                         eigenvector = list(vector) #Mutable vector can be stretched with eigenvector stretch function
                         while ((x+eigenvector[0]) in range(len(seats))) and ((y+eigenvector[1]) in range(len(seats[x]))): #Same evaluation for the initial vector operation, removes any chance of index error
@@ -62,7 +62,7 @@ while seats != arrangement: #While the previous matrix is not the new one (while
 
                             else:  #If seat is floor, stretch the eigenvector by 1
                                 eigenvector = stretch(eigenvector, vector, 1)
-                                
+
                 if occupied_count >= 5: #Given condition - if 5+ adjacent seats are occupied, this seat becomes empty
                     arrangement[x].append('L')
                 else:
