@@ -24,16 +24,14 @@ def count_trees(fileArr, col_inc, row_inc): #Function to count trees (based on t
 
     return tree_count #Function return value is the number of trees calculated
 
-file = open("day3trees.txt", 'r')
-fileArr = [] #File array contains each line from file (so file doesn't have to be reopended and reread each time)
+with open("day3trees.txt", 'r') as file:
+    fileArr = [] #File array contains each line from file (so file doesn't have to be reopended and reread each time)
 
-#Add values from file to file array
-for line in file:
-    fileArr.append(line)
-
-file.close()
+    #Add values from file to file array
+    for line in file:
+        fileArr.append(line)
 
 #Multiply each version to get the final product
 product = count_trees(fileArr, 1, 1) * count_trees(fileArr, 3, 1) * count_trees(fileArr, 5, 1) * count_trees(fileArr, 7, 1) * count_trees(fileArr, 1, 2)
 
-print("Product Of Tree Counts: {}".format(product))
+print(f"Product Of Tree Counts: {product}")

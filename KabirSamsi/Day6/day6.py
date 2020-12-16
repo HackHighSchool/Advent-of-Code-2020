@@ -1,6 +1,5 @@
-file = open("day6formsanswers.txt", "r")
-readFile = file.read().split('\n') #Split file into array of segments divided line breaks
-file.close()
+with open("day6formsanswers.txt", "r") as file:
+    readFile = file.read().split('\n') #Split file into array of segments divided line breaks
 
 answers = [] #Array stores each string of answers
 ans_count = 0 #Variable stores number of unique answers

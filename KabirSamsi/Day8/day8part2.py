@@ -1,12 +1,9 @@
-file = open("bootcode.txt", 'r')
+with open("bootcode.txt", 'r') as file:
+    commands = [] #Matrix of each command and its distance
 
-commands = [] #Matrix of each command and its distance
-
-#Read through file and parse into into commands matrix
-for line in file:
-    commands.append([line.split()[0], int(line.split()[1])]) #Append list to matrix
-
-file.close()
+    #Read through file and parse into into commands matrix
+    for line in file:
+        commands.append([line.split()[0], int(line.split()[1])]) #Append list to matrix
 
 switches = [] #Stores all the spots at which a command will be switched
 

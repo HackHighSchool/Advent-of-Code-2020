@@ -1,16 +1,12 @@
-file = open("day1entries.txt", "r")
-
-entries = []
+with open("day1entries.txt", "r") as file:
+    entries = []
+    for line in file:
+        entries.append(int(line))
 
 #Variables to track the two correct numbers, and their product
 num1 = 0
 num2 = 0
 product = 0
-
-for line in file:
-    entries.append(int(line))
-
-file.close()
 
 #Track 2 numbers in the list of numbers, by index
 for x in range(len(entries)):
@@ -24,6 +20,6 @@ for x in range(len(entries)):
             break
 
 #Output results
-print("Number 1: {}".format(num1))
-print("Number 2: {}".format(num2))
-print("Product: {}".format(product))
+print(f"Number 1: {num1}")
+print(f"Number 2: {num2}")
+print(f"Product: {product}")

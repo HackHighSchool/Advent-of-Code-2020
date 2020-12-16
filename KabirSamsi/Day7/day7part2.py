@@ -1,14 +1,12 @@
 from day7bagset import BagSet
 from day7countbags2 import count_bags
 
-file = open("day7luggage.txt", 'r')
-readFile = [] #Array stores file separated by linebreaks
-luggage = [] #Array stores all bagsets
+with open("day7luggage.txt", 'r') as file:
+    readFile = [] #Array stores file separated by linebreaks
+    luggage = [] #Array stores all bagsets
 
-for line in file:
-    readFile.append(line.strip('.\n'))
-
-file.close()
+    for line in file:
+        readFile.append(line.strip('.\n'))
 
 for line in readFile:
     bagset = BagSet(line.split('contain')[0].strip(), {}) #Creates BagSet object (See day7bagset.py)
