@@ -14,7 +14,7 @@ with open("day12directions.txt", 'r') as file:
         directions.append((line[0], int(line[1:])))
 
 position = [0, 0] #Starting position is at (0, 0)
-waypoint = [10, 1] #Waypoint position is at (10, 1)
+waypoint = [10, 1] #Waypoint vector starts at (10, 1)
 
 for direction in directions:
 
@@ -35,6 +35,5 @@ for direction in directions:
 
         for x in range(int(degree_change/90)): #Number of 90 degree rotations (all the listed rotations are multiples of 90)
             waypoint = [waypoint[1]*-1, waypoint[0]] #Rotation vector [-y, x] rotates the waypoint vector
-
 
 print(f"Manhattan Distance: {abs(position[0]) + abs(position[1])}") #Output results
