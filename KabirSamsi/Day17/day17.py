@@ -37,8 +37,6 @@ with open("day17grid.txt", 'r') as file:
         new_dimension.insert(0, new_slice)
         new_dimension.insert(len(new_dimension), new_slice)
         pocket_dimension = new_dimension[:] #Make pocket dimension equal the new modified dimension
-        if x == 0:
-            print(pocket_dimension)
 
         #THIS SECTION EVALUATES AND MODIFIES POCKET DIMENSION
         new_dimension = [] #Once again, new dimension is an empty matrix
