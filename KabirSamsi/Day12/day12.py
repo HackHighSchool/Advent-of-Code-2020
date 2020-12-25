@@ -29,7 +29,7 @@ for direction in directions:
 
     elif direction[0] in ORIENTATION_CHANGES: #Switching orientation
         pos_counter = ORIENTATIONS.index(orientation)
-        for x in range(int(direction[1]/90)): #There exists a new specific direction (N, S, E, W) at each 90-degree turn
+        for x in range(int(direction[1]/90)): #There exists a new specific direction (E, S, W, N) at each 90-degree turn
             pos_counter += ORIENTATION_CHANGES[direction[0]]
 
             #If end of array is reached on either end, return to the other end (works like unit circle)
