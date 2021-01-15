@@ -15,9 +15,10 @@ with open("input.txt") as f:
 
         if action == "L":
             degreeFacing += quantity
+            degreeFacing %= 360
         elif action == "R":
             degreeFacing += 360 - quantity
-        degreeFacing %= 360
+            degreeFacing %= 360
 
         if action == "F":
             # check the degreeConversion table

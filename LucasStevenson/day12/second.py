@@ -18,7 +18,6 @@ with open("input.txt") as f:
                 wy = tempx
 
         if action == "F":
-            # check the degreeConversion table
             sx += quantity * wx
             sy += quantity * wy
 
