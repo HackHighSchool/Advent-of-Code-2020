@@ -20,18 +20,16 @@ def countOccupiedSeats(arr):
 
 
 def seeNextSeat(x, y, dx, dy):
-    # return 0 if there's no seat
+    # return 0 if there's no seat or it's empty
     # return 1 if there is an occupied seat
     # else we keep on going until we find a seat
     while 1:
         x += dx
         y += dy
-        if ((x >= len(seatsArray)-1 or x < 0) or (y < 0 or y >= len(seatsArray[0])-1)):
+        if ((x >= len(seatsArray)-1 or x < 0) or (y < 0 or y >= len(seatsArray[0])-1) or (seatsArray[x][y] == "L")):
             return 0
         if seatsArray[x][y] == "#":
             return 1
-        elif seatsArray[x][y] == "L":
-            return 0
 
 
 # we compare to seatsArray and change the values of seatsArrayClone
@@ -39,8 +37,11 @@ seatsArrayClone = [row[:] for row in seatsArray]
 
 
 def updateSeatsArrayClone(r, c):
-    numOccupiedVisibleSeats = sum((seeNextSeat(r, c, 0, 1), seeNextSeat(r, c, 1, 0), seeNextSeat(
-        r, c, 0, -1), seeNextSeat(r, c, -1, 0), seeNextSeat(r, c, 1, 1), seeNextSeat(r, c, 1, -1), seeNextSeat(r, c, -1, -1), seeNextSeat(r, c, -1, 1)))
+    numOccupiedVisibleSeats = 0
+    dirs = [[0, 1], [1, 0], [0, -1], [-1, 0],
+            [1, 1], [1, -1], [-1, -1], [-1, 1]]
+    for i in dirs:
+        numOccupiedVisibleSeats += seeNextSeat(r, c, i[0], i[1])
 
     if seatsArray[r][c] == "L" and numOccupiedVisibleSeats == 0:
         seatsArrayClone[r][c] = "#"
