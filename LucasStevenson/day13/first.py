@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import math
 
 with open("input.txt") as f:
@@ -7,6 +8,16 @@ with open("input.txt") as f:
 
 timestamp = float(lines[0])
 buses = lines[1]
+
+
+# UPDATED SOLUTION
+
+closestTimes = [int(x * (math.ceil(timestamp / x))) for x in buses]
+print(int(min(closestTimes)-timestamp) *
+      buses[closestTimes.index(min(closestTimes))])
+
+'''
+# OLD SOLUTION
 
 difference = [buses[0] * math.ceil(timestamp/buses[0]), buses[0]]
 # difference[0] is the closest factor of the busID to the timestamp
@@ -18,3 +29,4 @@ for n in range(1, len(buses)):
     if busNum >= timestamp and busNum - timestamp < diff:
         difference = [busNum - timestamp, buses[n]]
 print(int(difference[0] * difference[1]))
+'''
