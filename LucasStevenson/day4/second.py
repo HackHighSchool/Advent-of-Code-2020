@@ -1,6 +1,54 @@
 '''
 https://adventofcode.com/2020/day/4#part2
 '''
+
+# NEW/UPDATED SOLUTION
+
+import re
+with open("input.txt") as f:
+    passports = []
+    passport = {}
+    readFile = f.read().split("\n")
+
+    for line in readFile:
+        if line == "":
+            passports.append(passport)
+            passport = {}
+        else:
+            for i in line.split():
+                passport[i.split(':')[0]] = i.split(':')[1]
+
+count = 0
+for d in passports:
+    good = True
+    if "byr" not in d or int(d["byr"]) not in range(1920,2003):
+        good = False
+    if "iyr" not in d or int(d["iyr"]) not in range(2010, 2021):
+        good = False
+    if "eyr"  not in d or int(d["eyr"]) not in range(2020, 2031):
+        good = False
+    if "hcl" not in d or not bool(re.match(r"(#[0-9a-f]{6}$)", d["hcl"])):
+        good = False
+    if "ecl" not in d or not bool(re.match(r"(amb|blu|brn|gry|grn|hzl|oth)", d["ecl"])):
+        good = False
+    if "pid" not in d or not bool(re.match(r"(\d{9})$", d["pid"])):
+        good = False
+
+    if "hgt" not in d or not bool(re.search(r"[cm|in]", d["hgt"])):
+        good = False
+    else:
+        num = int(re.match(r"(\d+)", d["hgt"])[0])
+        if "cm" in d["hgt"] and num not in range(150, 194):
+            good = False
+        elif "in" in d["hgt"] and num not in range(59,77):
+            good = False
+    if good:
+        count += 1
+print(count)
+
+'''
+# ORIGINAL SOLUTION
+
 with open("input.txt") as f:
     arr = []
     string = ""
@@ -52,4 +100,5 @@ validCount = 0
 for passport in passports:
     if checkPassport(passport):
         validCount += 1
-print(validCount)
+        print(validCount)
+'''
