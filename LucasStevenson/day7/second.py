@@ -1,3 +1,32 @@
+# NEW SOLUTION 12/2/21
+import re
+
+with open("input.txt") as f:
+    line = f.readline()
+    obj = {}
+    while line.strip():
+        pBag = re.search(r"(.+) bags contain", line)[1]
+        cBags = re.findall(r"(\d .+?) bag", line)
+        obj[pBag] = cBags
+        line = f.readline()
+
+def getNum(color):
+    if len(obj[color]) == 0:
+        return 0
+    counter = 0
+    for c in obj[color]:
+        counter += int(c[0]) + int(c[0])*getNum(c.split(' ', 1)[1])
+    return counter
+
+print(getNum("shiny gold"))
+
+
+
+
+
+
+# OLD SOLUTION
+'''
 with open("input.txt") as f:
     lines = f.readlines()
     lines = [line.strip() for line in lines]
@@ -23,3 +52,4 @@ def totalNumBags(color):
 
 
 print(totalNumBags("shiny gold"))
+'''

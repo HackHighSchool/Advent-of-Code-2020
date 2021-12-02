@@ -1,3 +1,37 @@
+# NEW SOLUTION 12/2/21
+import re
+
+with open("input.txt") as f:
+    line = f.readline()
+    obj = {}
+    while line.strip():
+        pBag = re.search(r"(.+) bags contain", line)[1]
+        cBags = re.findall(r"\d (.+?) bag", line)
+        obj[pBag] = cBags
+        line = f.readline()
+
+def numBags(color):
+    parents = []
+    for k, v in obj.items():
+        if color in v:
+            parents.append(k)
+    if len(parents) == 0:
+        return []
+    checkedParents = parents.copy()
+    for bagCol in parents:
+        checkedParents += numBags(bagCol)
+    return set(checkedParents)
+
+
+print(len(numBags("shiny gold")))
+
+
+
+
+
+# OLD SOLUTION
+'''
+import json
 '''
 https://adventofcode.com/2020/day/7
 '''
@@ -37,3 +71,4 @@ def numBags(color):
 
 
 print(len(numBags("shiny gold")))
+'''
